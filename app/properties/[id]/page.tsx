@@ -12,11 +12,11 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { formatPrice } from "@/lib/utils";
+import { hostawayFetch } from "@/lib/hostaway";
 
 async function getListing(id: string): Promise<Listing | null> {
   try {
-    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL ?? "http://localhost:3000";
-    const res = await fetch(`${baseUrl}/api/listings/${id}`, {
+    const res = await hostawayFetch(`/v1/listings/${id}?includeResources=1`, {
       next: { revalidate: 300 },
     });
     if (!res.ok) return null;

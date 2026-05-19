@@ -5,6 +5,7 @@ import type { Listing } from "@/lib/types";
 import type { Metadata } from "next";
 import { Home, Star, Users } from "lucide-react";
 import { formatDate } from "@/lib/utils";
+import { hostawayFetch } from "@/lib/hostaway";
 
 export const metadata: Metadata = {
   title: "Harriscove",
@@ -14,8 +15,7 @@ export const metadata: Metadata = {
 
 async function getAllListings(): Promise<Listing[]> {
   try {
-    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL ?? "http://localhost:3000";
-    const res = await fetch(`${baseUrl}/api/listings`, {
+    const res = await hostawayFetch("/v1/listings?limit=50&includeResources=1", {
       next: { revalidate: 300 },
     });
     if (!res.ok) return [];
