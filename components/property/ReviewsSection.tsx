@@ -1,10 +1,10 @@
 import { Star } from "lucide-react";
 import type { Review } from "@/lib/types";
+import { hostawayFetch } from "@/lib/hostaway";
 
 async function getReviews(listingId: number): Promise<Review[]> {
   try {
-    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL ?? "http://localhost:3000";
-    const res = await fetch(`${baseUrl}/api/reviews/${listingId}`, {
+    const res = await hostawayFetch(`/v1/reviews?listingId=${listingId}&limit=20`, {
       next: { revalidate: 3600 },
     });
     if (!res.ok) return [];

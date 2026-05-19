@@ -3,6 +3,7 @@ import PropertyCard from "@/components/property/PropertyCard";
 import AnimateOnScroll from "@/components/ui/AnimateOnScroll";
 import CountUpStat from "@/components/ui/CountUpStat";
 import type { Listing } from "@/lib/types";
+import { hostawayFetch } from "@/lib/hostaway";
 
 interface ListingsData {
   featured: Listing[];
@@ -14,8 +15,7 @@ interface ListingsData {
 
 async function getListingsData(): Promise<ListingsData> {
   try {
-    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL ?? "http://localhost:3000";
-    const res = await fetch(`${baseUrl}/api/listings`, {
+    const res = await hostawayFetch("/v1/listings?limit=50&includeResources=1", {
       next: { revalidate: 300 },
     });
     if (!res.ok) return { featured: [], total: 0, avgRating: 5, totalCapacity: 0, totalBedrooms: 0 };

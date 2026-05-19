@@ -1,10 +1,10 @@
 import TestimonialsCarousel from "./TestimonialsCarousel";
 import type { Review } from "@/lib/types";
+import { hostawayFetch } from "@/lib/hostaway";
 
 async function getReviews(): Promise<Review[]> {
   try {
-    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL ?? "http://localhost:3000";
-    const res  = await fetch(`${baseUrl}/api/reviews`, { next: { revalidate: 3600 } });
+    const res = await hostawayFetch("/v1/reviews?limit=100&sortOrder=submittedAt&sortDirection=desc", { next: { revalidate: 3600 } });
     if (!res.ok) return [];
     const data = await res.json();
     const all: Review[] = data.result ?? [];

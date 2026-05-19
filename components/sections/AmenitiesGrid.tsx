@@ -6,6 +6,7 @@ import AnimateOnScroll from "@/components/ui/AnimateOnScroll";
 import Link from "next/link";
 import type { Listing } from "@/lib/types";
 import type { ComponentType } from "react";
+import { hostawayFetch } from "@/lib/hostaway";
 
 // ── Editorial map: substring key → icon + marketing label + description ──────
 // Keys are lowercase substrings matched against API amenity names.
@@ -63,8 +64,7 @@ function matchKey<T>(name: string, map: Record<string, T>): string | null {
 
 async function getTopAmenities() {
   try {
-    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL ?? "http://localhost:3000";
-    const res = await fetch(`${baseUrl}/api/listings`, { next: { revalidate: 300 } });
+    const res = await hostawayFetch("/v1/listings?limit=50&includeResources=1", { next: { revalidate: 300 } });
     if (!res.ok) return null;
     const data = await res.json();
     const listings: Listing[] = data.result ?? data.results ?? [];

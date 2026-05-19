@@ -3,6 +3,7 @@ import { ArrowRight } from "lucide-react";
 import AnimateOnScroll from "@/components/ui/AnimateOnScroll";
 import GalleryPreviewGrid, { type GalleryPhoto } from "./GalleryPreviewGrid";
 import type { Listing } from "@/lib/types";
+import { hostawayFetch } from "@/lib/hostaway";
 
 // Fallback photos shown when API returns no images
 const FALLBACKS: GalleryPhoto[] = [
@@ -15,8 +16,7 @@ const FALLBACKS: GalleryPhoto[] = [
 
 async function getGalleryPhotos(): Promise<GalleryPhoto[]> {
   try {
-    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL ?? "http://localhost:3000";
-    const res = await fetch(`${baseUrl}/api/listings`, { next: { revalidate: 300 } });
+    const res = await hostawayFetch("/v1/listings?limit=50&includeResources=1", { next: { revalidate: 300 } });
     if (!res.ok) return FALLBACKS;
 
     const data = await res.json();

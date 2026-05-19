@@ -15,11 +15,11 @@ import {
 } from "lucide-react";
 import type { Listing } from "@/lib/types";
 import type { Metadata } from "next";
+import { hostawayFetch } from "@/lib/hostaway";
 
 async function getListingStats() {
   try {
-    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL ?? "http://localhost:3000";
-    const res = await fetch(`${baseUrl}/api/listings`, {
+    const res = await hostawayFetch("/v1/listings?limit=50&includeResources=1", {
       next: { revalidate: 300 },
     });
     if (!res.ok) return null;

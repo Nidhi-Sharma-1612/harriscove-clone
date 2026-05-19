@@ -4,6 +4,7 @@ import GalleryGrid from "@/components/property/GalleryGrid";
 import type { Listing } from "@/lib/types";
 import type { Metadata } from "next";
 import { Images, Home } from "lucide-react";
+import { hostawayFetch } from "@/lib/hostaway";
 
 export const metadata: Metadata = {
   title: "Gallery",
@@ -12,8 +13,9 @@ export const metadata: Metadata = {
 
 async function getAllListings(): Promise<Listing[]> {
   try {
-    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL ?? "http://localhost:3000";
-    const res = await fetch(`${baseUrl}/api/listings`, { next: { revalidate: 300 } });
+    const res = await hostawayFetch("/v1/listings?limit=50&includeResources=1", {
+      next: { revalidate: 300 },
+    });
     if (!res.ok) return [];
     const data = await res.json();
     return data.result ?? data.results ?? [];
