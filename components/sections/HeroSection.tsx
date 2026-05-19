@@ -45,6 +45,7 @@ export default function HeroSection() {
         muted
         loop
         playsInline
+        preload="metadata"
         className="absolute inset-0 w-full h-full object-cover"
       >
         {VIDEO_SOURCES.map((src) => (

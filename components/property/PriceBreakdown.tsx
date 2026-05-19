@@ -88,18 +88,7 @@ export default function PriceBreakdown({ listingId, checkIn, checkOut, guests }:
           <span>{formatPrice(price.cleaningFee, currency)}</span>
         </div>
       ) : null}
-      {price.hostServiceFee ? (
-        <div className="flex justify-between">
-          <span className="text-muted-foreground">Service fee</span>
-          <span>{formatPrice(price.hostServiceFee, currency)}</span>
-        </div>
-      ) : null}
-      {price.taxes ? (
-        <div className="flex justify-between">
-          <span className="text-muted-foreground">Taxes</span>
-          <span>{formatPrice(price.taxes, currency)}</span>
-        </div>
-      ) : null}
+
       {price.total ? (
         <div className="flex justify-between font-semibold text-base border-t border-border pt-2 mt-2">
           <span>Total</span>
