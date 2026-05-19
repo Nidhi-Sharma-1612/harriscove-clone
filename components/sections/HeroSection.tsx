@@ -70,7 +70,7 @@ export default function HeroSection() {
           {/* Headline */}
           <m.h1
             variants={stagger.item}
-            className="font-serif text-4xl sm:text-5xl lg:text-7xl font-bold text-white leading-[1.1] tracking-tight mb-5 sm:mb-6"
+            className="font-serif text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-[1.1] tracking-tight mb-5 sm:mb-6"
           >
             Your Perfect
             <br />

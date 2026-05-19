@@ -59,7 +59,7 @@ export default function BookingWidget({
   const [checkOut, setCheckOut] = useState("");
   const [guests, setGuests] = useState(2);
   const [calOpen, setCalOpen] = useState(false);
-  const [popupPos, setPopupPos] = useState({ top: 0, left: 0, width: 0 });
+  const [popupPos, setPopupPos] = useState({ top: 0, left: 0, width: 0, maxHeight: 600 });
   const triggerRef = useRef<HTMLDivElement>(null);
   const today = new Date();
 
@@ -72,7 +72,8 @@ export default function BookingWidget({
       rect.left + w > window.innerWidth
         ? window.innerWidth - w - 12
         : rect.left;
-    setPopupPos({ top: rect.bottom + 8, left, width: w });
+    const maxHeight = window.innerHeight - rect.bottom - 8 - 20;
+    setPopupPos({ top: rect.bottom + 8, left, width: w, maxHeight });
   }, []);
 
   const openCalendar = useCallback(() => {
@@ -220,6 +221,8 @@ export default function BookingWidget({
               top: popupPos.top,
               left: popupPos.left,
               width: popupPos.width,
+              maxHeight: popupPos.maxHeight,
+              overflowY: "auto",
             }}
           >
             {/* Header */}

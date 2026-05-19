@@ -113,24 +113,24 @@ export default async function ConfirmationPage({ searchParams }: ConfirmationPag
                   Your Stay
                 </span>
               </div>
-              <div className="px-6 py-5 grid grid-cols-3 divide-x divide-border/50 text-center">
+              <div className="px-4 sm:px-6 py-5 grid grid-cols-3 divide-x divide-border/50 text-center">
                 {checkIn && (
-                  <div className="pr-4">
-                    <p className="text-xs text-muted-foreground mb-1">Check-in</p>
-                    <p className="font-bold text-foreground text-sm sm:text-base">{formatDate(checkIn)}</p>
+                  <div className="pr-2 sm:pr-4">
+                    <p className="text-[10px] sm:text-xs text-muted-foreground mb-1">Check-in</p>
+                    <p className="font-bold text-foreground text-xs sm:text-sm lg:text-base leading-snug">{formatDate(checkIn)}</p>
                   </div>
                 )}
                 {nights && (
-                  <div className="px-4">
-                    <p className="text-xs text-muted-foreground mb-1">Duration</p>
-                    <p className="font-serif font-bold text-foreground text-xl sm:text-2xl">{nights}</p>
-                    <p className="text-xs text-muted-foreground">night{nights === 1 ? "" : "s"}</p>
+                  <div className="px-2 sm:px-4">
+                    <p className="text-[10px] sm:text-xs text-muted-foreground mb-1">Duration</p>
+                    <p className="font-serif font-bold text-foreground text-lg sm:text-2xl">{nights}</p>
+                    <p className="text-[10px] sm:text-xs text-muted-foreground">night{nights === 1 ? "" : "s"}</p>
                   </div>
                 )}
                 {checkOut && (
-                  <div className="pl-4">
-                    <p className="text-xs text-muted-foreground mb-1">Check-out</p>
-                    <p className="font-bold text-foreground text-sm sm:text-base">{formatDate(checkOut)}</p>
+                  <div className="pl-2 sm:pl-4">
+                    <p className="text-[10px] sm:text-xs text-muted-foreground mb-1">Check-out</p>
+                    <p className="font-bold text-foreground text-xs sm:text-sm lg:text-base leading-snug">{formatDate(checkOut)}</p>
                   </div>
                 )}
               </div>

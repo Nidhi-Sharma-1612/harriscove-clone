@@ -27,7 +27,7 @@ export default function AvailabilityCalendar({
   const [blockedDates, setBlockedDates] = useState<Date[]>([]);
   const [loading, setLoading]           = useState(false);
   const [open, setOpen]                 = useState(false);
-  const [popupPos, setPopupPos]         = useState({ top: 0, left: 0, width: 0 });
+  const [popupPos, setPopupPos]         = useState({ top: 0, left: 0, width: 0, maxHeight: 600 });
   const triggerRef = useRef<HTMLDivElement>(null);
 
   // Load 12 months of calendar data
@@ -58,7 +58,8 @@ export default function AvailabilityCalendar({
     const left = rect.left + popupWidth > window.innerWidth
       ? window.innerWidth - popupWidth - 12
       : rect.left;
-    setPopupPos({ top: rect.bottom + 8, left, width: popupWidth });
+    const maxHeight = window.innerHeight - rect.bottom - 8 - 20;
+    setPopupPos({ top: rect.bottom + 8, left, width: popupWidth, maxHeight });
     setOpen(true);
   }, []);
 
@@ -89,7 +90,8 @@ export default function AvailabilityCalendar({
       const left = rect.left + popupWidth > window.innerWidth
         ? window.innerWidth - popupWidth - 12
         : rect.left;
-      setPopupPos({ top: rect.bottom + 8, left, width: popupWidth });
+      const maxHeight = window.innerHeight - rect.bottom - 8 - 20;
+      setPopupPos({ top: rect.bottom + 8, left, width: popupWidth, maxHeight });
     }
     window.addEventListener("scroll", reposition, true);
     window.addEventListener("resize", reposition);
@@ -205,7 +207,7 @@ export default function AvailabilityCalendar({
             <CalendarDays className="h-3 w-3 text-secondary" />
             Check Out
           </label>
-          <p className={`text-sm font-semibold ${checkOut ? "text-foreground" : "text-muted-foreground/50"}`}>
+          <p className={`text-sm font-semibold text-left ${checkOut ? "text-foreground" : "text-muted-foreground/50"}`}>
             {checkOut ? format(parseISO(checkOut), "MMM d, yyyy") : "Select date"}
           </p>
         </div>
@@ -241,7 +243,7 @@ export default function AvailabilityCalendar({
         <div
           id="availability-calendar-popup"
           className="fixed z-9999 bg-white rounded-2xl border border-border shadow-2xl p-4"
-          style={{ top: popupPos.top, left: popupPos.left, minWidth: 320 }}
+          style={{ top: popupPos.top, left: popupPos.left, width: popupPos.width, maxHeight: popupPos.maxHeight, overflowY: "auto" }}
         >
           {loading ? (
             <div className="flex items-center justify-center gap-2 text-xs text-muted-foreground py-8">

@@ -20,9 +20,9 @@ export default function FaqAccordion() {
       <div className="absolute top-1/2 right-0 w-72 h-72 bg-secondary/5 rounded-full blur-3xl pointer-events-none -translate-y-1/2" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-        <div className="grid lg:grid-cols-5 gap-10 lg:gap-16">
+        <div className="grid md:grid-cols-5 gap-10 md:gap-16">
           {/* ── Left: sticky heading panel ──────────────────────── */}
-          <div className="lg:col-span-2 lg:sticky lg:top-28 lg:self-start">
+          <div className="md:col-span-2 md:sticky md:top-28 md:self-start">
             <AnimateOnScroll>
               <p className="gold-shimmer text-xs font-bold uppercase tracking-[0.35em] mb-3">
                 FAQ
@@ -52,7 +52,7 @@ export default function FaqAccordion() {
           </div>
 
           {/* ── Right: accordion ────────────────────────────────── */}
-          <div className="lg:col-span-3">
+          <div className="md:col-span-3">
             <div className="divide-y divide-border">
               {FAQ_ITEMS.slice(0, PREVIEW_COUNT).map((item, i) => {
                 const isOpen = open === i;

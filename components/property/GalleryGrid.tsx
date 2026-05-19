@@ -159,7 +159,7 @@ export default function GalleryGrid({ images, listings }: GalleryGridProps) {
                   }`}
                 >
                   <MapPin className="h-3 w-3" />
-                  <span className="truncate max-w-32">{l.name}</span>
+                  <span className="truncate max-w-30 sm:max-w-40">{l.name}</span>
                   <span className={`text-[10px] font-bold px-1.5 py-0.5 rounded-full ml-0.5 ${
                     active ? "bg-white/20 text-white" : "bg-muted text-muted-foreground"
                   }`}>

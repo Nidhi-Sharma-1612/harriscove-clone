@@ -111,10 +111,10 @@ export default function BookPage({ params }: BookPageProps) {
 
         {/* ── Content ─────────────────────────────────────────── */}
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-14">
-          <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 lg:gap-12">
+          <div className="grid grid-cols-1 md:grid-cols-5 gap-8 md:gap-12">
 
             {/* ── Left: form ───────────────────────────────────── */}
-            <form onSubmit={handleSubmit} className="lg:col-span-3 space-y-5">
+            <form onSubmit={handleSubmit} className="md:col-span-3 space-y-5">
 
               {/* Guest info card */}
               <div className="bg-white rounded-2xl border border-border/60 overflow-hidden">
@@ -215,7 +215,7 @@ export default function BookPage({ params }: BookPageProps) {
             </form>
 
             {/* ── Right: booking summary ────────────────────────── */}
-            <div className="lg:col-span-2">
+            <div className="md:col-span-2">
               <div className="bg-white rounded-2xl border border-border/60 overflow-hidden sticky top-24">
 
                 {/* Property thumbnail */}

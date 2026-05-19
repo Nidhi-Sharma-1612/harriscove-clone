@@ -111,7 +111,7 @@ export default function TestimonialsCarousel({
               duration: 0.4,
               ease: [0.22, 1, 0.36, 1] as [number, number, number, number],
             }}
-            className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-5"
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5"
           >
             {visible.map((review) => (
               <div

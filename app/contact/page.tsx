@@ -118,10 +118,10 @@ export default function ContactPage() {
         {/* ── Main content ─────────────────────────────────────── */}
         <section className="bg-background py-12 sm:py-16">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 lg:gap-12">
+            <div className="grid grid-cols-1 md:grid-cols-5 gap-8 md:gap-12">
 
               {/* ── Left: contact methods ──────────────────────── */}
-              <div className="lg:col-span-2 space-y-4">
+              <div className="md:col-span-2 space-y-4">
                 <h2 className="font-serif text-2xl sm:text-3xl font-bold text-foreground mb-6">
                   Ways to Reach Us
                 </h2>
@@ -182,7 +182,7 @@ export default function ContactPage() {
               </div>
 
               {/* ── Right: contact form ────────────────────────── */}
-              <div className="lg:col-span-3">
+              <div className="md:col-span-3">
                 <div className="bg-white rounded-2xl border border-border/60 overflow-hidden shadow-sm">
 
                   {/* Form header */}
